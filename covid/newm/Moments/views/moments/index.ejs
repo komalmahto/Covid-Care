@@ -1,0 +1,223 @@
+<%- include("../partials/header") %>
+<section id="testimonials">
+	<div id="testimonials-carousel" class="carousel slide" data-ride="false">
+		<div class="carousel-inner">
+
+			<div class="carousel-item active">
+				<h2 class="testimonial-text">Maintain at least 1 metre distance between you and people coughing or sneezing.</h2>
+				<img class="testimonials-image" src="\preventions\distance.png" alt="lady-profile">
+
+			</div>
+
+			<div class="carousel-item">
+				<h2>Wash your hands regularly with soap and water, or clean them with alcohol-based hand rub</h2>
+				<img class="testimonials-image" src="\preventions\soap.png" alt="dog-profile">
+
+			</div>
+			<div class="carousel-item">
+				<h2>Avoid touching your face. Cover your mouth and nose when coughing or sneezing.</h2>
+				<img class="testimonials-image" src="\preventions\mask.jpg" alt="dog-profile">
+
+			</div>
+			<div class="carousel-item">
+				<h2>Stay home if you feel unwell.Refrain from smoking and other activities that weaken the lungs.</h2>
+				<img class="testimonials-image" src="\preventions\stay.png" alt="dog-profile">
+
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#testimonials-carousel" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#testimonials-carousel" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+</section>
+
+
+<div class="row" style="margin-top:2%;">
+	<div class="col-lg-3 col-md-6">
+		<div>
+			
+			<div style=" width:100%; text-align: center ;background-color:#d9adad;">
+				<h4>
+					Check Your Danger Zone <br>Distance In Meters 
+				</h4>
+			</div>
+			<ul style="list-style-type: none; padding:0 2%">
+				<li class="nav-item active">
+      <li style="width:100%;padding:3%">
+				<form class="" action="/safezone/0.5" method="post">
+					<input type="hidden" class="postLat" name="userlat" >
+					<input type="hidden" class="postLng" name="userlng" >
+				<button style="width:100%;" type="submit" class="btn btn-danger distance" >500</button>
+				</form>
+			</li>
+    	<li style="width:100%;padding:3%">
+				<form class="" action="/safezone/1000" method="post">
+					<input type="hidden" class="postLat" name="userlat" >
+					<input type="hidden" class="postLng" name="userlng" >
+				<button style="width:100%;" type="submit" class="btn btn-danger distance"  >1000</button>
+				</form>
+			</li>
+    	<li style="width:100%;padding:3%">
+				<form class="" action="/safezone/1.5" method="post">
+					<input type="hidden" class="postLat" name="userlat" >
+					<input type="hidden" class="postLng" name="userlng" >
+				<button style="width:100%;" type="submit" class="btn btn-warning distance"  >2000</button>
+				</form>
+			</li>
+    	<li style="width:100%;padding:3%">
+				<form class="" action="/safezone/2" method="post">
+					<input type="hidden" class="postLat" name="userlat" >
+					<input type="hidden" class="postLng" name="userlng" >
+					<button style="width:100%;" type="submit" class="btn btn-warning distance"  >5000</button>
+				</form>
+			</li>
+			<li style="width:100%;padding:3%">
+				<a style="width:100%;"  class="btn btn-success distance" href="/moments">no filter</a>
+			</li>
+    </ul>
+		</div>
+		
+	</div>
+	 <div class="col-lg-6 col-md-6 " style="">
+		 
+	<% moments.forEach(function(moment){%>
+	
+		<div class="home" style="margin:3% 0;">
+			<h1 style="text-align:center;"> <%=moment.title%></h1>
+	  <img style="width:100%;"src="/uploads/<%=moment.photopath%>">
+		 <p style="margin-bottom:1%;margin-bottom:1%;"><%=moment.body.substring(0,50)%>...</p>
+		
+		<p><b>Posted By-</b> <%=moment.author.username %> on <%=moment.created.toDateString()%> </p>
+			<h5 > <%=moment.email%></h5>
+		<a href="/moments/<%=moment._id%>">
+    <button style="margin:1% 32% 1% 32%;" class="btn btn-success">Show More</button>
+</a>
+	</div>
+		
+
+	<%});%>
+
+	</div>
+	<div class="col-lg-3 col-md-6 covidinfo" style="overflow: auto;font-family: 'Anton', sans-serif;">
+		<div >
+			<div style="background-color:#d9adad;">
+				<label style="font-size:30px;padding:2%;" for="">State - </label>
+    <label style="font-size:25px;"  id="covidstate"for=""></label>
+			</div>
+	
+    <br>
+			<div style="background-Color:#bbe1fa;padding:2%;">
+				 <label style="font-size:30px;"  for="">Active Cases - </label>
+    <label style="font-size:25px;"  id="covidactive"for=""></label>
+			</div>
+   
+    <br>
+			
+    <div  style="background-color:#a8df65;">
+				<label style="font-size:30px;padding:2%;" for="">Recovered - </label>
+    <label style="font-size:25px;" id="covidrecovered" for=""></label>
+			</div>
+     
+    <br>
+			<div style="background-color:#e84a5f;">
+				<label style="font-size:30px;padding:2%;" for="">Confirmed- </label>
+    <label style="font-size:25px;" id="covidconfirmed" for=""></label>
+			</div>
+     
+    <br>
+			<div style="background-color:#838383">
+				<label style="font-size:30px;padding:2%;" for="">Death - </label>
+    <label style="font-size:25px;" id="coviddeath" for=""></label>
+			</div>
+			<div>
+				<br>
+				<div style="background-color:#f0ece3;">
+					<label style="font-size:30px;padding:2%;" for="">Last Updated - </label>
+    <label style="font-size:25px;" id="covidup" for=""></label>
+				</div>
+				
+			</div>
+     
+</div>
+<script>
+var stateData=[];
+fetch("https://api.covid19india.org/data.json")
+.then(res=> res.json())
+.then(data => {
+ data.statewise.forEach(function(state){
+   stateData.push(state);
+ });
+
+})
+.catch(error => console.log(error));
+
+var i=1;
+
+function print(stateData){
+	console.log(stateData);
+	var state=document.getElementById("covidstate");
+  var active=document.getElementById("covidactive");
+  var death=document.getElementById("coviddeath");
+   var recovered=document.getElementById("covidrecovered");
+    var confirm=document.getElementById("covidconfirmed");
+     var lastup=document.getElementById("covidup");
+	if(i===stateData.length)
+	{ 
+	state.innerHTML = stateData[1].state;
+    active.innerHTML = stateData[1].active;
+    death.innerHTML = stateData[1].deaths;
+    recovered.innerHTML = stateData[1].recovered;
+    confirm.innerHTML = stateData[1].confirmed;
+    lastup.innerHTML = stateData[1].lastupdatedtime;
+
+		i=1;
+	}
+	else
+	{
+    state.innerHTML = stateData[i].state;
+      active.innerHTML = stateData[i].active;
+      death.innerHTML = stateData[i].deaths;
+       recovered.innerHTML = stateData[i].recovered;
+    confirm.innerHTML = stateData[i].confirmed;
+    lastup.innerHTML = stateData[i].lastupdatedtime;
+		i=i+1;
+	}
+}
+setInterval(print,5000,stateData);
+	
+	
+	
+		if (navigator.geolocation)
+	{
+						navigator.geolocation.getCurrentPosition(function(position) {
+							var x=document.getElementsByClassName("postLat");
+							var y=document.getElementsByClassName("postLng");
+              console.log(x);
+
+               for(var i=0;i<=x.length;i++){
+								 x[i].value=position.coords.latitude;
+	 						  	y[i].value=position.coords.longitude;
+
+							 }
+
+
+							});
+	}
+
+
+
+</script>
+		</div>
+	</div>
+
+
+
+
+
+<%- include("../partials/footer") %>

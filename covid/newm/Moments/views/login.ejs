@@ -1,0 +1,37 @@
+<%- include("partials/header") %>
+
+<div class="login-style">
+	<div class="row"  >
+	<div class="col signupsignin" style="background-color:redcd;" >
+		<div style="">
+			<div style="opacity:1;">
+				<div class="" >
+				<form action="/login" method="POST" autocomplete="off">
+					<div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal" style="color:white;"><b>Login</b></h1>
+  
+                 </div>
+					<div class="form-label-group">
+				    <input type="text"  name="username"id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+				    <label for="inputEmail">Username</label>
+				  </div>
+
+					<div class="form-label-group">
+				    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required style="width:100%">
+				    <label for="inputPassword">Password</label>
+				  </div>
+              <button class="btn btn-lg btn-primary btn-block">Submit</button>
+
+
+
+				</form>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+</div>
+<%- include("partials/footer") %>

@@ -1,0 +1,195 @@
+.login-style{
+	background-image: url("http://opiniojuris.org/wp-content/uploads/ey-webcast-stay-operational-resilient-during-covid-19.jpg");
+	 background-repeat: no-repeat;
+	height:100%;
+	width:100%;
+	background-size:cover;
+	};
+#box{
+	width:100%;
+	height:20vh;
+	
+	
+}
+#box img{
+	float: left;
+	height: 100%;
+}
+#message{
+	overflow: auto;
+	margin:0;
+	padding:2%;
+	font-size: 21px;
+	font-family: 'Rowdies', cursive;
+	
+	line-height: 1.2em;
+}
+.cold{
+	color:white;
+	
+}
+
+
+.color{
+	color:white;
+	font-size:90%;
+}
+.distance:hover{
+	color:white;
+	background-color: grey;
+	transition: 1s;
+}
+.bcn{
+	color:#e36387;
+	font-size:200%;
+
+}
+
+.navbar-brand{
+	font-weight:500;
+	font-size:1.2em;
+}
+.cn{
+	color:black;
+}
+
+
+
+
+.nav-link{
+	font-weight:500;
+	font-size:1em;
+}
+a navbar-brand :hover{
+	transform: scale(1.3);
+}
+
+.container-fluid{
+	margin-top:2em;
+}
+
+.signupsignin{
+	width: 50%;margin:10% 25%;
+}
+
+@media only screen and (max-width: 768px) {
+	.home{
+	padding:0 3%;
+	}
+	.covidinfo{
+		margin-top:4%;
+	}
+.signupsignin{
+		width: 95%;
+		margin:20% 2.5%;
+	}
+}
+
+
+/* signin css */
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group > input,
+.form-label-group > label {
+  height: 3.125rem;
+  padding: .75rem;
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  pointer-events: none;
+  cursor: text; /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+/* carouse */
+
+#testimonials{
+
+text-align: center;
+background-color: #0779e4;
+color: #fff;
+
+}
+.testimonials-image{
+width:20%;
+border-radius: 100%;
+padding-top: 2%;
+}
+#press{
+background-color: #0779e4;
+text-align: center;
+}
+.press-logo{
+width: 5%;
+margin:20px 20px 50px;
+
+}
+.carousel-item{
+padding:1% 15%;
+}

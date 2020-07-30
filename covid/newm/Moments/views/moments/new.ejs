@@ -1,0 +1,104 @@
+<%- include("../partials/header") %>
+<div class="row" style="margin-top:7%;">
+	<div class="col-md-3">
+		<div>
+			<h4 style="text-align:center;"><i style="color:#fa1616;"class="fas fa-skull-crossbones"></i> Patients's Location</h4>
+			
+		<div id="lcn" style="border:1px solid black;height:50vh;margin:2%;">
+		
+			<script>
+				   
+				  var map = L.map('lcn').setView([0, 0], 1);
+				   const marker=L.marker([0, 0]).addTo(map);
+				 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{ 
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);     
+              if("geolocation" in navigator){
+                 console.log("geolocation available");
+                 navigator.geolocation.getCurrentPosition(position => {
+					 document.getElementById("postLat").value =position.coords.latitude;
+						 document.getElementById("postLng").value =position.coords.longitude;
+                     var lat=position.coords.latitude;
+                     var lon=position.coords.longitude;
+					 
+					  //L.marker([lat, lon]).addTo(map);
+					 marker.setLatLng([lat,lon]);
+                     document.getElementById("latitude").textContent=lat;
+                     document.getElementById("longitude").textContent=lon;
+					 }) ;
+             }else{
+                     console.log("geolocation not available");
+
+              }</script>
+
+			
+		</div>
+		
+
+		</div>
+	</div>
+	
+	<div class="col-md-6">
+		<form action="/moments" enctype="multipart/form-data" method="POST" autocomplete="off">
+	<div class="new-div" style="margin:2%;" >
+
+
+		<div class="new-moment-div" >
+			<h3 style="text-align:center;">Write About Patient</h3>
+
+
+  <div class="form-group">
+    <label class="label-style"  ><i class="fas fa-equals"></i> TITLE</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="postTitle" placeholder="Title">
+
+  </div>
+			<div class="form-group">
+    <label class="label-style"  ><i class="fas fa-equals"></i> Your Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="phoneNumber" placeholder="Your Email">
+
+  </div>
+		<div class="form-group">
+    <label class="label-style" ><i class="fas fa-image" ></i> Image</label>
+    <input type="file" class="form-control"  name="postImage" accept="image/*"placeholder="Add Moments">
+
+  </div>
+
+				<div class="form-group">
+    <label class="label-style"  ><i class="fas fa-pencil-alt "></i> Write </label><br>
+	<label class="label-style"  >  Can't Write Start Speaking</label>
+                    <a class=" btn btn-warning btn-start"><i class="fas fa-microphone"></i> Start</a>
+					<a class="btn btn-danger btn-end"><i class="fas fa-microphone-slash"></i> End</a>
+	<textarea style="margin-top:2%;" type="text" id="messageinp" class="form-control"  name="postBody" placeholder="Write About Patient"></textarea>
+ 
+  </div>
+			<div class="row">
+				<div class="col" style="padding:0 40%;">
+
+            <input  id="bot" type="submit" style="text-align:center;" class="btn  btn-primary x" value="UPLOAD">
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+<input type="hidden" id="postLat" name="postLat" >
+<input type="hidden" id="postLng" name="postLng" >
+</form>
+	</div>
+	<div class="col-md-3">
+		<div style="margin:2%;">
+			<h4>List Of Nearby Hospitals</h4>
+			<li>Medical College <br>Phone : 0522-2265424/2266310</li>
+			<li>Vivekanand Hospital <br>Phone : 0522-2321277, 2328486, </li>
+			<li> Dufferin Hospital <br>Phone : 0522-2224050</li>
+			<li>Blue Cross Hospital <br>Phone : 0522-2365075</li>
+			<li> Cantonment General Hospital <br>Phone : 0522-2451152, 2451377, 2480813</li>
+			<li>Civil Hospital <br>Phone : 0522-2239595</li>
+		</div>
+	</div>
+
+</div>
+<div>
+     
+
+<%- include("../partials/footer") %>

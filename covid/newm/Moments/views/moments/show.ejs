@@ -1,0 +1,93 @@
+<%- include("../partials/header") %>
+<div style="padding:0 3%">
+   <div class="row" style="margin-top:7%">
+	   <div class="col-md-3">
+		   <h4 style="text-align:center;"><i style="color:#fa1616;"class="fas fa-skull-crossbones"></i> Patients's Location</h4>
+		<div id="lcn" style="height:50vh;">
+		<script>
+					   var map = L.map('lcn').setView([0, 0], 1);
+				   const market=L.marker([0, 0]).addTo(map);
+				 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+
+              if("geolocation" in navigator){
+                 console.log("geolocation available");
+                 navigator.geolocation.getCurrentPosition(position => {
+                     var lat=position.coords.latitude;
+                     var lon=position.coords.longitude;
+					  L.marker([<%=moment.postlat%>,<%=moment.postlng%>]).addTo(map);
+					 market.setLatLng([<%=moment.postlat%>,<%=moment.postlng%>])
+                     document.getElementById("latitude").textContent=<%=moment.postlat%>;
+                     document.getElementById("longitude").textContent=<%=moment.postlng%>;
+
+                 });
+             }else{
+                     console.log("geolocation not available");
+
+              }</script>
+
+         
+
+		</div>
+	</div>
+	   <div class="col-md-8" style="margin:3% 0;">
+		   <div class="new-div">			<div >   
+	 <h4 style="text-align:center;">Patient Information<br></h4>
+		<div>
+<h5 style="text-align:center;"> <%=moment.title%></h5>
+			
+			<div class="thumbnail">
+			<img class="image-responsive" style="width:50%;margin-left:25%;"src="/uploads/<%=moment.photopath%>"><br>
+                     </div>
+	  			</div>
+<div style="margin-top:2%;padding:0.3%;">
+		<p style="font-family: 'Satisfy', cursive;"><%=moment.body%></p>
+	<p><b>Posted By-</b><%=moment.author.username %> on <%=moment.created.toDateString()%> </p>
+ <h5 > <%=moment.email%></h5>
+				</div> 
+			  
+				
+		<% if( currentUser && moment.author.id.equals(currentUser._id))	{ %>
+				 <form action="/moments/<%= moment._id %>/edit" method="GET">
+
+  <button type="submit" style="text-align:center;" class=" btn btn-lg btn-info btn-block">Edit</button>
+
+      </form>
+      <form action="/moments/<%=moment._id%>?_method=DELETE" method="POST">
+
+  <button  type="submit" style="text-align:center;" class=" btn btn-lg btn-danger btn-block">Delete</button>
+
+			</form>	
+				<% } %>
+			  
+	</div>
+			<div style="margin-top:2%;background-color:#e3dfc8;padding:1%;">   
+			  
+<% moment.comments.forEach(function(comment){ %>
+				<div class="row">
+					<div class="col-md-12">
+						<p><b><%= comment.author.username %></b>-<%= comment.text%></p>
+					</div>
+				</div>
+				   
+<% }) %>
+		<hr>
+	<div class="text-left">
+       <a styel="padding-top:2%;"class="btn btn-success" href="/moments/<%=moment._id%>/comments/new">Add New Comment</a>
+				</div>
+				
+			   </div>
+     
+
+    
+
+  </div>
+			 </div>
+
+
+	   </div>
+</div>
+
+<%- include("../partials/footer") %>

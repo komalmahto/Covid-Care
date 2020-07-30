@@ -1,0 +1,76 @@
+<%- include("../partials/header") %>
+ <div class="row">
+	 <div class="col-md-4">
+		<div id="lcn" style="border:1px solid black;height:69vh;margin-top:6%;margin-left:5%;">
+		<script>
+
+					   var map = L.map('lcn').setView([0, 0], 1);
+				   const market=L.marker([0, 0]).addTo(map);
+				 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+
+              if("geolocation" in navigator){
+                 console.log("geolocation available");
+                 navigator.geolocation.getCurrentPosition(position => {
+                     var lat=position.coords.latitude;
+                     var lon=position.coords.longitude;
+					  L.marker([<%=moment.postlat%>,<%=moment.postlng%>]).addTo(map);
+					 market.setLatLng([<%=moment.postlat%>,<%=moment.postlng%>])
+                     document.getElementById("latitude").textContent=<%=moment.postlat%>;
+                     document.getElementById("longitude").textContent=<%=moment.postlng%>;
+
+                 });
+             }else{
+                     console.log("geolocation not available");
+
+              }</script>
+
+         
+
+		</div>
+	</div>
+	 
+	 
+	 <div class="col-md-6">
+		 <form action="/moments/<%=moment._id%>?_method=PUT" enctype="multipart/form-data" method="POST" >
+			 <div class="new-div" style="margin-top:4%;">
+<h4 style="text-align:center;">Edit Patient Info</h4>
+				 <h5 style="text-align:center;"><span> <%=moment.created.toDateString()%></span></h5>
+
+				 <h4 style="text-align:center;margin-bottom:0%;" > <%=moment.title%> <span style="font-size:60%;color:black">  </span></h4>
+
+
+  <div class="form-group">
+    <label class="label-style"><i class="fas fa-equals"></i> TITLE</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="postTitle" value="<%=moment.title%>">
+
+  </div><div class="form-group">
+    <label class="label-style"><i class="fas fa-equals"></i> Phone Number</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="postTitle" value="<%=moment.email%>">
+
+  </div>
+		<div class="form-group">
+    <label class="label-style"><i class="fas fa-image"></i> Image</label>
+    <input type="file" class="form-control"  name="postImage" accept="image/*" value="<%=moment.image%>">
+
+  </div>
+
+				<div class="form-group">
+    <label class="label-style" ><i class="fas fa-pencil-alt "></i> Write</label>
+	<textarea type="text" class="form-control"  name="postBody" value="<%=moment.body%>" ><%=moment.body%></textarea>
+
+  </div>
+		<div class="form-group">
+  <button type="submit" style="text-align:center;" class="btn  btn-primary x">Submit</button>
+	</div>
+	</div>
+</form>
+    
+	 </div>
+</div>
+
+
+
+<%- include("../partials/footer") %>

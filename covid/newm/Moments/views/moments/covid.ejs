@@ -1,0 +1,80 @@
+<%- include("../partials/header") %>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<%- include("../partials/footer") %>
+  
+<canvas id="graph"  style="width:40%;height:40vh;"></canvas>
+
+   <script>
+   	 var stateData=[];
+var confirm=[];
+var active=[];
+var deaths=[];
+var recovered=[];
+var states=[];
+
+fetch("https://api.covid19india.org/data.json")
+.then(res=> res.json())
+.then(data => {
+ data.statewise.forEach(function(state){
+   stateData.push(state);
+ })
+stateData.forEach(function(state){
+  active.push(state.active);
+
+});
+stateData.forEach(function(state){
+  confirm.push(state.confirmed);
+
+});
+stateData.forEach(function(state){
+  deaths.push(state.deaths);
+});
+  stateData.forEach(function(state){
+  states.push(state.state);
+
+});
+stateData.forEach(function(state){
+  recovered.push(state.recovered);
+
+});
+
+console.log(confirm);
+
+
+var graph= document.getElementById("graph").getContext("2d");
+var graph = new Chart(graph,{
+  type:"bar",
+  data:{
+    labels: states,
+    datasets:[
+        
+        {
+          label:"Active",
+          data: active , 
+          backgroundColor: "#0779e4",
+         },
+         {
+          label:"Confirmed",
+         data: confirm, 
+         backgroundColor: "red", 
+         },
+         {
+          label:"Recovered",
+         data: recovered,
+         backgroundColor: "#a8df65",
+         },
+         {
+          label:"Deaths",
+         data: deaths ,
+         backgroundColor: "#838383",
+         },
+        
+    ],
+  },
+  options:{},
+});
+});
+   </script>
+
